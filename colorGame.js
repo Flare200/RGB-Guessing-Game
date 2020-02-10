@@ -8,8 +8,9 @@ var colors=[
 ]
 
 var squares=document.querySelectorAll(".square")
-var pickedColor=colors[3]
+var pickedColor=pickColor()
 var colorDisplay=document.querySelector("#colorDisplay")
+var msgDisplay=document.querySelector("#msg")
 
 colorDisplay.textContent=pickedColor
 
@@ -26,11 +27,29 @@ for(var i=0; i<squares.length; i++)
         //Compare color to pickedColor
         if(clickedColor===pickedColor)
         {
-            alert("Correct")
+            msgDisplay.textContent="Correct!"
+            changeColors(pickedColor)
         }
         else
         {
-            alert("Wrong")
+            this.style.backgroundColor="#232323"
+            msgDisplay.textContent="Try Again"
         }
     })
+}
+
+function changeColors(color)
+{
+    //Loop through all sqaures
+    for(var i=0; i<squares.length; i++)
+    {
+        //Change color to match given color
+        squares[i].style.backgroundColor=color
+    }
+}
+
+function pickColor()
+{
+    var random=Math.floor(Math.random()*colors.length)
+    return colors[random]
 }
