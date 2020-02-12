@@ -120,5 +120,4 @@ function setupModeButtons() {
             reset()
         })
     }
-    return i
 }
